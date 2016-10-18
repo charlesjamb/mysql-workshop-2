@@ -201,3 +201,56 @@ mysql> select count(*) from Entry where subtype='phone';
 |      600 |
 +----------+
 1 row in set (0,00 sec)
+
+select max(counted) from (select count(*) as counted from AddressBook group by accountId) as counts;
+
+## Exercise 1 - Workshop 3
+mysql> select accountId from AddressBook group by accountId order by count(*) desc limit 1;
++-----------+
+| accountId |
++-----------+
+|        14 |
++-----------+
+1 row in set (0,00 sec)
+
+mysql> select * from Account where id = 14;
++----+-------------------------------+-------------+---------------------+---------------------+
+| id | email                         | password    | createdOn           | modifiedOn          |
++----+-------------------------------+-------------+---------------------+---------------------+
+| 14 | egestas.Fusce.aliquet@nec.edu | WMH41SPP9PE | 2014-10-11 20:56:30 | 2016-06-28 23:50:09 |
++----+-------------------------------+-------------+---------------------+---------------------+
+1 row in set (0,00 sec)
+
+mysql> select max(counted) from (select count(*) as counted from AddressBook group by accountId) as counts;
++--------------+
+| max(counted) |
++--------------+
+|           19 |
++--------------+
+1 row in set (0,00 sec)
+
+mysql> select addressBookId from Entry group by addressBookId order by count(*) desc limit 1;
++---------------+
+| addressBookId |
++---------------+
+|            37 |
++---------------+
+1 row in set (0,01 sec)
+
+mysql> select max(avar) from (select count(*) as avar from Entry group by addressBookId) as counts;
++-----------+
+| max(avar) |
++-----------+
+|        52 |
++-----------+
+1 row in set (0,01 sec)
+
+mysql> select * from AddressBook where id = 37;
++----+-----------+-----------------------+---------------------+---------------------+
+| id | accountId | name                  | createdOn           | modifiedOn          |
++----+-----------+-----------------------+---------------------+---------------------+
+| 37 |        79 | Eu Augue Incorporated | 2015-09-09 03:49:37 | 2014-12-09 02:01:11 |
++----+-----------+-----------------------+---------------------+---------------------+
+1 row in set (0,00 sec)
+
+
