@@ -152,3 +152,27 @@ mysql> select count(*) from AddressBook;
 +----------+
 1 row in set (0,00 sec)
 
+## Exercise 10
+mysql> select count(*) from Entry where Entry.birthday < 19820212;
++----------+
+| count(*) |
++----------+
+|     2687 |
++----------+
+1 row in set (0,00 sec)
+
+mysql> select count(*) from Entry where Entry.birthday >= 19650101;
++----------+
+| count(*) |
++----------+
+|     2597 |
++----------+
+1 row in set (0,01 sec)
+
+mysql> select * from Entry where (birthday) IN (select min(birthday) from Entry);
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id   | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| 2260 |            93 | Abigail   | Rollins  | 1945-09-02 09:21:58 | other | address | 194 Non Road   | Berlin         | Berlin           | Bolivia         | 791155          |
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+1 row in set (0,03 sec)
