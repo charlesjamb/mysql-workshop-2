@@ -10,6 +10,11 @@ Query OK, 1 row affected (0,01 sec)
 
 mysql> insert into Entry values (null, 1, 'charles', 'jambon', 19930718, 'home', 'email', 'line One', null, null, null, null);
 Query OK, 1 row affected (0,00 sec)
+mysql> insert into Entry
+    -> values (null, 2, 'bob', 'vance', 19800202, 'work', 'phone', 'line one bob', null, null, null, null);
+Query OK, 1 row affected (0,01 sec)
+mysql> insert into Entry values (null, 3, 'michael', 'scott', 19780522, 'work', 'phone', 'line one michael', null, null, null, null);
+Query OK, 1 row affected (0,01 sec)
 
 ## Excercise 3 
 mysql> select * from Account;
@@ -29,11 +34,34 @@ mysql> select * from AddressBook;
 1 row in set (0,00 sec)
 
 mysql> select * from Entry;
-+----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
-| id | addressBookId | firstName | lastName | birthday            | type | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
-+----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
-|  1 |             1 | charles   | jambon   | 1993-07-18 00:00:00 | home | email   | line One       | NULL           | NULL             | NULL            | NULL            |
-+----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
-1 row in set (0,00 sec)
++----+---------------+-----------+----------+---------------------+------+---------+------------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type | subtype | contentLineOne   | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+------+---------+------------------+----------------+------------------+-----------------+-----------------+
+|  1 |             1 | charles   | jambon   | 1993-07-18 00:00:00 | home | email   | line One         | NULL           | NULL             | NULL            | NULL            |
+|  2 |             2 | bob       | vance    | 1980-02-02 00:00:00 | work | phone   | line one bob     | NULL           | NULL             | NULL            | NULL            |
+|  3 |             3 | michael   | scott    | 1978-05-22 00:00:00 | work | phone   | line one michael | NULL           | NULL             | NULL            | NULL            |
++----+---------------+-----------+----------+---------------------+------+---------+------------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0,00 sec)
 
 ## Exercise 4
+mysql> update Account
+    -> set email='chuck@chuck.com';
+Query OK, 1 row affected (0,01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update AddressBook
+    -> set name='chucky';
+Query OK, 1 row affected (0,02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Entry
+    -> set contentLineOne = case id
+    -> when 1 then 'new content chuck'
+    -> when 2 then 'new content bob'
+    -> when 3 then 'new content michael'
+    -> end
+    -> where id in (1,2,3);
+Query OK, 3 rows affected (0,01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+
