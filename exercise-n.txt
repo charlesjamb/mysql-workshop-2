@@ -253,4 +253,30 @@ mysql> select * from AddressBook where id = 37;
 +----+-----------+-----------------------+---------------------+---------------------+
 1 row in set (0,00 sec)
 
+## Exercise 2 - Workshop 3
+mysql> select count(*) from Entry where subtype = 'phone' and contentLineOne like '(3%' or contentLineOne like '1-3%' ;
++----------+
+| count(*) |
++----------+
+|       60 |
++----------+
+1 row in set (0,01 sec)
+
+mysql> mysql> count(*) from Entry where subtype = 'phone' and type = 'home' and contentLineOne not like '%5%';
++----------+
+| count(*) |
++----------+
+|       76 |
++----------+
+1 row in set (0,00 sec)
+
+mysql> select count(*) from Entry where subtype = 'phone' and type = 'work' and contentLineOne not like '%(%';
++----------+
+| count(*) |
++----------+
+|       60 |
++----------+
+1 row in set (0,00 sec)
+
+
 
