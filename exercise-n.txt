@@ -84,4 +84,15 @@ mysql> show tables;
 +----------------------------------------+
 2 rows in set (0,00 sec)
 
+## Exercise 7
+charles@charlesthinkpad:~$ mysql -u root -p decodemtl_addressbook_import < ~/workspace/decodemtl/sqlWorkshop2/data/import-table-structure.sql
+Enter password: 
+charles@charlesthinkpad:~$ mysql -u root -p decodemtl_addressbook_import < ~/workspace/decodemtl/sqlWorkshop2/data/import-account.sql
+Enter password: 
+charles@charlesthinkpad:~$ mysql -u root -p decodemtl_addressbook_import < ~/workspace/decodemtl/sqlWorkshop2/data/import-addressbook.sql
+Enter password: 
+charles@charlesthinkpad:~$ mysql -u root -p decodemtl_addressbook_import < ~/workspace/decodemtl/sqlWorkshop2/data/import-entry.sql
+Enter password: 
+charles@charlesthinkpad:~$ 
+
 
