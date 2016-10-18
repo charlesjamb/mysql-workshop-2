@@ -64,4 +64,11 @@ mysql> update Entry
 Query OK, 3 rows affected (0,01 sec)
 Rows matched: 3  Changed: 3  Warnings: 0
 
+## Exercise 5
+mysql> truncate table Entry;
+Query OK, 0 rows affected (0,05 sec)
+
+mysql> select * from Entry;
+Empty set (0,00 sec)
+
 
